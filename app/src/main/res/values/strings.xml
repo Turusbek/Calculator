@@ -19,6 +19,15 @@
     <string name="plus">+</string>
     <string name="equals">=</string>
     <string name="dot">,</string>
+    <string name="editText1">Policy</string>
+    <string name="editText2">Product Category</string>
+    <string name="editText3">Origin Country</string>
+    <string name="editText4">Brand</string>
+    <string name="button">Export as CSV</string>
+    <string name="policies">Policies</string>
+    <string name="current">Current Policies</string>
+    <string name="button2">Next</string>
+
 
 
 </resources>

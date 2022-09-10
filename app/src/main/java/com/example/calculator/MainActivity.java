@@ -1,13 +1,17 @@
 package com.example.calculator;
 
-import static com.example.calculator.R.id.btn_four;
-import static com.example.calculator.R.id.text_view;
+import static com.example.calculator.R.id.btn_equal;
+import static com.example.calculator.R.id.btn_next;
+import static com.example.calculator.R.id.textResult;
+
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 
@@ -18,11 +22,23 @@ public class MainActivity extends AppCompatActivity {
     private String operation = "";
     private Integer result;
     private String operationSelected;
+    private Button btnNext;
 
-    protected void onCreate(Bundle savedInstanceState) {
+        protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         textView = findViewById(R.id.text_view);
+             btnNext = findViewById(btn_next);
+            findViewById(R.id.btn_next).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(MainActivity.this,HomeworkActivity2.class);
+                    String text = result.toString();
+                    intent.putExtra("key",text);
+                    startActivity(intent);
+                    finish();
+                }
+            });
     }
 
     @SuppressLint("NonConstantResourceId")
@@ -125,6 +141,7 @@ public class MainActivity extends AppCompatActivity {
         isOperationClick = false;
     }
 
+    @SuppressLint("Range")
     public void click(View view) {
         switch (view.getId()) {
             case R.id.btn_plus:
@@ -148,8 +165,11 @@ public class MainActivity extends AppCompatActivity {
                 isOperationClick = true;
                 break;
             case R.id.btn_equal:
+                btnNext.animate().alpha(100);
                 second = Integer.parseInt(textView.getText().toString());
-                switch (operationSelected) {
+                switch (operationSelected)
+                {
+
                     case "+":
                         result = first + second;
                         operation = String.valueOf(result);
